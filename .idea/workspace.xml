@@ -4,7 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/Tests/test_tsproblem.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3dc6aee-dd67-4cac-9aba-620e4ddd2778" name="Default" comment="Added documentation to brute force documentation.">
+    <list default="true" id="b3dc6aee-dd67-4cac-9aba-620e4ddd2778" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -136,6 +136,7 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -207,8 +208,16 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Tests" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="TravelingIntelligence" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="TravelingIntelligence" />
+      </console-settings>
+    </option>
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -276,6 +285,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b3dc6aee-dd67-4cac-9aba-620e4ddd2778" name="Default" comment="" />
@@ -298,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516566007536</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added GPG key">
+      <created>1516567184935</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1516567184935</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -335,7 +354,8 @@
     <MESSAGE value="Added copyright statement for making public." />
     <MESSAGE value="Added to README" />
     <MESSAGE value="Added documentation to brute force documentation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added documentation to brute force documentation." />
+    <MESSAGE value="Added GPG key" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GPG key" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
