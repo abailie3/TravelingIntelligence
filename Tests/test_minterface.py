@@ -1,6 +1,10 @@
+"""
+Copyright 2018, Austin Bailie, All rights reserved.
+"""
 import unittest
-import math
+
 from MachineLibrary import minterface
+
 
 class MachineLibraryTestCase(unittest.TestCase):
 

@@ -1,7 +1,11 @@
-from distance import Euclidean
-import bruteforcemethod as BF
+"""
+Copyright 2018, Austin Bailie, All rights reserved.
+"""
 import unittest
+
+import bruteforcemethod as BF
 import tsproblem as tsp
+from distance import Euclidean
 
 
 class BruteForceTestCase(unittest.TestCase):

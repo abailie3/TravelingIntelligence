@@ -1,6 +1,11 @@
+"""
+Copyright 2018, Austin Bailie, All rights reserved.
+"""
 from abc import ABC, abstractmethod
-from tsproblem import TSProblem
 from typing import Tuple, List
+
+from tsproblem import TSProblem
+
 
 class TSMethod(ABC):
     @abstractmethod

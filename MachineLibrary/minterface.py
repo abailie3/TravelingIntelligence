@@ -1,7 +1,10 @@
-from typing import Tuple, List
+"""
+Copyright 2018, Austin Bailie, All rights reserved.
+"""
 import inspect
-import types
 import math
+import types
+from typing import Tuple, List
 
 
 class MachineInterface(object):

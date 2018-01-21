@@ -1,9 +1,15 @@
-from tsmethod_abc import TSMethod, TSProblem
-from distance import DistanceMeasure
+"""
+Copyright 2018, Austin Bailie, All rights reserved.
+"""
 import queue
 import time
 
+from distance import DistanceMeasure
+from tsmethod_abc import TSMethod, TSProblem
+
+
 class BruteForce(TSMethod):
+    # TODO: ADD DOCUMENTATION
     def __init__(self, dm: DistanceMeasure):
         self.distanceMeasure = dm
         self.lastRunTime = 0

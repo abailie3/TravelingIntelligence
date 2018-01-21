@@ -1,3 +1,6 @@
+"""
+Copyright 2018, Austin Bailie, All rights reserved.
+"""
 from abc import ABC, abstractmethod
 
 class DistanceMeasure(ABC):
