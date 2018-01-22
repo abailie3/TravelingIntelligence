@@ -6,6 +6,12 @@ See other included test modules for notes on how to configure sub-tests.
 """
 import unittest
 
+# if __name__ == "__main__":
+#     import test_tsproblem
+#     import test_bruteforcemethod
+#     import test_minterface
+#     import test_distance
+# else:
 from tests import test_tsproblem
 from tests import test_bruteforcemethod
 from tests import test_minterface
