@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3dc6aee-dd67-4cac-9aba-620e4ddd2778" name="Default" comment="Other workspace changes..">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/setup.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/context.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/travelingintelligence/__init__.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/machine_library/minterface.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bruteforcemethod.py" afterPath="$PROJECT_DIR$/travelingintelligence/bruteforcemethod.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/distance.py" afterPath="$PROJECT_DIR$/travelingintelligence/distance.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tsmethod_abc.py" afterPath="$PROJECT_DIR$/travelingintelligence/tsmethod_abc.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tsproblem.py" afterPath="$PROJECT_DIR$/travelingintelligence/tsproblem.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tsvisualizer.py" afterPath="$PROJECT_DIR$/travelingintelligence/tsvisualizer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_bruteforcemethod.py" afterPath="$PROJECT_DIR$/tests/test_bruteforcemethod.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_distance.py" afterPath="$PROJECT_DIR$/tests/test_distance.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_minterface.py" afterPath="$PROJECT_DIR$/tests/test_minterface.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_tsproblem.py" afterPath="$PROJECT_DIR$/tests/test_tsproblem.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,7 +35,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/travelingintelligence/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -80,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+            <state relative-caret-position="144">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -153,7 +140,6 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/test/test_all.py" />
         <option value="$PROJECT_DIR$/deploy.sh" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/tests/context.py" />
         <option value="$PROJECT_DIR$/tests/test_all.py" />
         <option value="$PROJECT_DIR$/core/__init__.py" />
@@ -161,6 +147,7 @@
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/tests/test_bruteforcemethod.py" />
         <option value="$PROJECT_DIR$/tests/__init__.py" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -783,14 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/context.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -849,6 +828,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="19" lean-forward="true" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
