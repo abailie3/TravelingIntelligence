@@ -1,9 +1,10 @@
 """
 Copyright 2018, Austin Bailie, All rights reserved.
 """
-import unittest
-import distance
 import math
+import unittest
+
+from travelingintelligence import distance
 
 
 class DistanceMeasureTestCase(unittest.TestCase):

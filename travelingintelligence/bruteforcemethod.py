@@ -5,8 +5,8 @@ import queue
 import time
 from typing import Tuple, List
 
-from distance import DistanceMeasure
-from tsmethod_abc import TSMethod, TSProblem
+from travelingintelligence.distance import DistanceMeasure
+from travelingintelligence.tsmethod_abc import TSMethod, TSProblem
 
 
 class BruteForce(TSMethod):

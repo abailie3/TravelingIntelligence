@@ -3,7 +3,7 @@ Copyright 2018, Austin Bailie, All rights reserved.
 """
 import unittest
 
-import tsproblem as tsp
+from travelingintelligence import tsproblem as tsp
 
 
 class TSProblemTestCase(unittest.TestCase):

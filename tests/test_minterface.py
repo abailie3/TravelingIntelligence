@@ -3,7 +3,7 @@ Copyright 2018, Austin Bailie, All rights reserved.
 """
 import unittest
 
-from machine_library import minterface
+from travelingintelligence.machinelibrary import minterface
 
 
 class MachineLibraryTestCase(unittest.TestCase):

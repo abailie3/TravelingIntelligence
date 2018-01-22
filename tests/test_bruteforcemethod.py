@@ -3,9 +3,8 @@ Copyright 2018, Austin Bailie, All rights reserved.
 """
 import unittest
 
-import bruteforcemethod as BF
-import tsproblem as tsp
-from distance import Euclidean
+from travelingintelligence import tsproblem as tsp, bruteforcemethod as BF
+from travelingintelligence.distance import Euclidean
 
 
 class BruteForceTestCase(unittest.TestCase):
