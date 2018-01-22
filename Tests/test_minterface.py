@@ -36,7 +36,17 @@ class MachineLibraryTestCase(unittest.TestCase):
         self.assertEqual(5, mi.__count_commas__(string))
         self.assertEqual(0, mi.__count_commas__(string2))
 
+"""
+The below lines of code should be included in all sub-test modules.
+"""
+
+
 def suite():
+    """
+    This method must be included at the end of all sub-test modules. To use in other modules, copy this entire
+    method to the new module and change the class within the loader.loadTestsFromTestCase(<change>) as appropriate.
+    :return: (unittest.TestSuite) Test suite for this sub-test
+    """
     loader = unittest.TestLoader()
     return loader.loadTestsFromTestCase(MachineLibraryTestCase)
 

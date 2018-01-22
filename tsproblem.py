@@ -18,11 +18,11 @@ class TSProblem(object):
         :param points: (list(tuple)) User supplied points, if this is left blank the method will
                        call self.__setup_random.
         :param origin: (tuple) User supplied origin, if this is left blank then self.origin will be points[0]
-        :param max_points: (integer) For self.__setup_random. This corresponds to the number of randomly
+        :param max_points: (int) For self.__setup_random. This corresponds to the number of randomly
                            generated points.
-        :param dim: (integer) For self.__setup_random. This corresponds to the point dimension.
-        :param highs: (list(integer)) For self.__setup_random. These are the max point value for each dimension.
-        :param lows: (list(integer)) For self.__setup_random. These are the min point value for each dimension.
+        :param dim: (int) For self.__setup_random. This corresponds to the point dimension.
+        :param highs: (list(int)) For self.__setup_random. These are the max point value for each dimension.
+        :param lows: (list(int)) For self.__setup_random. These are the min point value for each dimension.
         :return: (void)
         """
         if points is None:
@@ -40,10 +40,10 @@ class TSProblem(object):
     def __setup_random__(self, max_points, dim=2, highs=(100,100), lows=(0,0)):
         """
         Method to create random TS ponints
-        :param max_points: (integer) Number of points. One will be the origin.
-        :param dim: (integer) This corresponds to the point dimension.
-        :param highs: (list(integer)) These are the max point value for each dimension.
-        :param lows: (list(integer)) These are the min point value for each dimension.
+        :param max_points: (int) Number of points. One will be the origin.
+        :param dim: (int) This corresponds to the point dimension.
+        :param highs: (list(int)) These are the max point value for each dimension.
+        :param lows: (list(int)) These are the min point value for each dimension.
         :return:
         """
         self.targets = []

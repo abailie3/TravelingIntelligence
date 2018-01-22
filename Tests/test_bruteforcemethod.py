@@ -26,7 +26,17 @@ class BruteForceTestCase(unittest.TestCase):
         result = bf.get_rest(points, 0)
         self.assertEqual(result, [2, 35, 3])
 
+"""
+The below lines of code should be included in all sub-test modules.
+"""
+
+
 def suite():
+    """
+    This method must be included at the end of all sub-test modules. To use in other modules, copy this entire
+    method to the new module and change the class within the loader.loadTestsFromTestCase(<change>) as appropriate.
+    :return: (unittest.TestSuite) Test suite for this sub-test
+    """
     loader = unittest.TestLoader()
     return loader.loadTestsFromTestCase(BruteForceTestCase)
 

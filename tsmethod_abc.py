@@ -8,6 +8,9 @@ from tsproblem import TSProblem
 
 
 class TSMethod(ABC):
+    """
+    An abstract class for the method of solving a traveling salesman problem.
+    """
     @abstractmethod
     def solve(self, problem: TSProblem) -> Tuple[float, List[tuple]]:
         pass

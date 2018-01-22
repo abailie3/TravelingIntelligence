@@ -84,7 +84,17 @@ class TSProblemTestCase(unittest.TestCase):
         self.assertLess(tmatches/test_length, threshold)
         self.assertLess(omatches/test_length, threshold)
 
+"""
+The below lines of code should be included in all sub-test modules.
+"""
+
+
 def suite():
+    """
+    This method must be included at the end of all sub-test modules. To use in other modules, copy this entire
+    method to the new module and change the class within the loader.loadTestsFromTestCase(<change>) as appropriate.
+    :return: (unittest.TestSuite) Test suite for this sub-test
+    """
     loader = unittest.TestLoader()
     return loader.loadTestsFromTestCase(TSProblemTestCase)
 

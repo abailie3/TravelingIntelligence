@@ -31,7 +31,7 @@ class BruteForce(TSMethod):
                                       length of the path, and the second member is the sequence visited (as a
                                       list of the points in order of visit).
         """
-        start = time.process_time() # for logging the algorithm run time.
+        start = time.process_time()  # for logging the algorithm run time.
 
         origin = problem.origin
         targets = problem.targets

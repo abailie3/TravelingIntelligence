@@ -11,10 +11,10 @@ class MachineInterface(object):
     """
     An interface allowing AI/ML algorithms to design and execute algorithms.
     """
-    __tab__ = "    "
+    __tab__ = "    "  # Standard tab width for line indentation
     __base_imports__ = ["from typing import Tuple, List"]
     __method_start__ = "def solve(origin, start) -> Tuple[float, List[tuple]]:\n" + __tab__ + \
-                      "fout = -1.\n" + __tab__ + "lout = []\n"
+                       "fout = -1.\n" + __tab__ + "lout = []\n"
     __return__ = __tab__ + "return fout, lout"
 
     __ASSIGNVARIABLE = 0
@@ -62,7 +62,8 @@ class MachineInterface(object):
         # TODO: Add code for variable assignment
         pass
 
-    def __math__(self, inputs: list) -> str:
+    @staticmethod
+    def __math__(inputs: list) -> str:
         """
         This method chooses a function from the math package and creates a line of code representing its usage.
         :param inputs: (list) A list of inputs to configure the method call.
@@ -122,14 +123,16 @@ class MachineInterface(object):
         else:
             return commas + 1
 
-
     @staticmethod
     def __count_commas__(test_str: str) -> int:
+        """
+        :param test_str: (str) String with commas to count
+        :return: (int) Number of commas in test_str
+        """
         i = test_str.find(",")
         if i == -1:
             return 0
         return 1 + MachineInterface.__count_commas__(test_str[i+1:])
-
 
     @staticmethod
     def __safe_idx__(arr_name: str, idx) -> str:
