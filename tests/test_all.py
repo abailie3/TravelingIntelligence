@@ -6,10 +6,10 @@ See other included test modules for notes on how to configure sub-tests.
 """
 import unittest
 
-from Tests import test_tsproblem
-from Tests import test_bruteforcemethod
-from Tests import test_minterface
-from Tests import test_distance
+from tests import test_tsproblem
+from tests import test_bruteforcemethod
+from tests import test_minterface
+from tests import test_distance
 
 
 def suite():
