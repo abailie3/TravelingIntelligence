@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-python3 Tests/test_all
+python3 test/test_all
