@@ -12,4 +12,6 @@ python:
 install:
   - pip install -r requirements.txt
 
-script: deploy.sh
+script:
+  - pytest
+  - py.test
