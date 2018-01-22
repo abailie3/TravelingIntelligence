@@ -1,5 +1,6 @@
 # TravelingIntelligence
 #### Traveling Intelligence: AI vs. Traveling Salesman
+[![Build Status](https://travis-ci.org/abailie3/TravelingIntelligence.svg?branch=master)](https://travis-ci.org/abailie3/TravelingIntelligence)
 
 The goal of this project is to create a sandbox for testing algorithms on the Traveling Salesman problem. This project is primarily focused on using AI to create these algorithms. As such, a large portion of this project is focused on creating a "MachineInterface" that will allow machine learning/AI algorithms to dynamically create algorithms.
 
