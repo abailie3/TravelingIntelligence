@@ -10,12 +10,7 @@ from tests import test_bruteforcemethod
 from tests import test_distance
 from tests import test_minterface
 from tests import test_tsproblem
-# if __name__ == "__main__":
-#     import test_tsproblem
-#     import test_bruteforcemethod
-#     import test_minterface
-#     import test_distance
-# else:
+from tests import test_tsvisualizer
 
 def suite():
     """
@@ -28,6 +23,7 @@ def suite():
     suite.addTest(test_bruteforcemethod.suite())
     suite.addTest(test_minterface.suite())
     suite.addTest(test_distance.suite())
+    suite.addTest(test_tsvisualizer.suite())
     return suite
 
 if __name__ == "__main__":
