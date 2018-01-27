@@ -13,7 +13,8 @@ install:
   - pip install coverage
 
 script:
-  - coverage run tests.py
+  - cd tests
+  - coverage test_all.py
 
 after_success:
   - codecov
