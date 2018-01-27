@@ -4,7 +4,7 @@ Copyright 2018, Austin Bailie, All rights reserved.
 import inspect
 import math
 import types
-from typing import Tuple, List
+from typing import Tuple, List, Iterable
 
 
 class MachineInterface(object):
@@ -13,17 +13,19 @@ class MachineInterface(object):
     """
     __tab__ = "    "  # Standard tab width for line indentation
     __base_imports__ = ["from typing import Tuple, List"]
-    __method_start__ = "def solve(origin, start) -> Tuple[float, List[tuple]]:\n" + __tab__ + \
+    __method_start__ = "def solve(origin, targets) -> Tuple[float, List[tuple]]:\n" + __tab__ + \
                        "fout = -1.\n" + __tab__ + "lout = []\n"
     __return__ = __tab__ + "return fout, lout"
 
     __ASSIGNVARIABLE = 0
 
+
+
     def __init__(self):
         self.__method = self.__method_start__
         self.__addImports = []
         self.__lineDepth = 1
-        self.__variables = ["origin", "start", "lout", "fout"]
+        self.__variables = [("origin",), ("targets", List), ("fout",), ("lout", List)]
         self.__numVar = len(self.__variables)
 
     def __compile__(self) -> types.FunctionType:
@@ -45,7 +47,10 @@ class MachineInterface(object):
             out += imp + "\n"
         return out + self.__method + "\n" + self.__return__
 
-    def __new_var__(self, name=None) -> str:
+    def __new_list__(self, name=None):
+        return self.__new_var__(List, name)
+
+    def __new_var__(self, type=None, name=None) -> str:
         """
         For creating and logging new variables.
         :param name: (Optional str) The name for the variable. If none a random name will be created.
@@ -55,7 +60,9 @@ class MachineInterface(object):
             from time import time
             name = str(int(time()*1e7))
         self.__numVar += 1
-        self.__variables.append(name)
+        self.__variables.append((name,type))
+        if type == List:
+            return name + " = []"
         return name
 
     def __var_assign__(self, idx, value) -> str:

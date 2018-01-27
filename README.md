@@ -20,7 +20,7 @@ The current focus of this project is on developing the MachineInterface module.
 Other low hanging fruit include:
 - Adding more documentation to current modules/github.
 - Adding contribution guidlines for community support.
-- Creating a visualizer module (tsvisualizer) to visualize a TSProblem graph.
+- Creating a visualizer module (tsvisualizer) to visualize a TSProblem graph. -- Completed 1/25/18 --
 - Creating an algorithm benchmarking module with visualizer.
 - Adding a wiki for the project.
 
