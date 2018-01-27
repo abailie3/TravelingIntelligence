@@ -14,7 +14,7 @@ install:
 
 script:
   - cd tests
-  - coverage test_all.py
+  - coverage run test_all.py
 
 after_success:
   - codecov
