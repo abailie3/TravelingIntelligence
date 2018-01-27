@@ -2,6 +2,10 @@
 Copyright (c) 2018 Austin Bailie, All rights reserved.
 """
 from typing import List, Tuple
+import os
+import matplotlib
+if os.environ.get('DISPLAY','') == '':
+    matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 class ProblemVisualizer(object):
