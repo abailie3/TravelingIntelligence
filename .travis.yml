@@ -13,7 +13,6 @@ install:
   - pip install coverage
 
 script:
-  - cd tests
   - coverage run test_all.py
 
 after_success:
