@@ -1,5 +1,5 @@
 """
-Copyright 2018, Austin Bailie, All rights reserved.
+Copyright (c) 2018 Austin Bailie, All rights reserved.
 
 This is the main testing class. All tests should be added to the suite method below.
 See other included test modules for notes on how to configure sub-tests.

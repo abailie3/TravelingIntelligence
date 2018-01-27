@@ -1,5 +1,5 @@
 """
-Copyright 2018, Austin Bailie, All rights reserved.
+Copyright (c) 2018 Austin Bailie, All rights reserved.
 """
 import unittest
 
@@ -9,6 +9,10 @@ from travelingintelligence import tsvisualizer as TSV
 class TSVisualizerTestCase(unittest.TestCase):
 
     def test_split_tuples(self):
+        """
+        Tests the __split_tuples__ method.
+        :return: (void)
+        """
         points = [(0, 0), (0, 1), (1, 0), (2, 3)]
         x = [0, 0, 1, 2]
         y = [0, 1, 0, 3]

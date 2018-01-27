@@ -1,5 +1,5 @@
 """
-Copyright 2018, Austin Bailie, All rights reserved.
+Copyright (c) 2018 Austin Bailie, All rights reserved.
 """
 import inspect
 import math
@@ -53,6 +53,7 @@ class MachineInterface(object):
     def __new_var__(self, type=None, name=None) -> str:
         """
         For creating and logging new variables.
+        :param type: (Optional str) The name of the type of the variable.
         :param name: (Optional str) The name for the variable. If none a random name will be created.
         :return: (str) The name. Either the provided name or the randomly generated name.
         """

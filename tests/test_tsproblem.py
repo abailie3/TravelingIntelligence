@@ -1,5 +1,5 @@
 """
-Copyright 2018, Austin Bailie, All rights reserved.
+Copyright (c) 2018 Austin Bailie, All rights reserved.
 """
 import unittest
 
@@ -8,18 +8,31 @@ from travelingintelligence import tsproblem as tsp
 
 class TSProblemTestCase(unittest.TestCase):
     def test_given_points(self):
+        """
+        Tests the TSProblem class when constructed with given points
+        :return: (void)
+        """
+
+        # Test given points without an origin
         points = [(0.2, 0.1), (1, 2), (1e9, -2), (2, 4)]
         prob = tsp.TSProblem()
         prob.setup_problem(points)
         self.assertEqual(prob.targets, [(1, 2), (1e9, -2), (2, 4)])
         self.assertEqual(prob.origin, (0.2, 0.1))
 
+        # Test given points with an origin
         prob = tsp.TSProblem()
         prob.setup_problem(points, (1, 1))
         self.assertEqual(prob.targets, points)
         self.assertEqual(prob.origin, (1, 1))
 
     def test_random_points(self):
+        """
+        Tests the TSProblem class when constructed without points.
+        :return: (void)
+        """
+
+        # Create many random TSProblem's.
         prob = tsp.TSProblem()
         targets = []
         origins = []
@@ -33,9 +46,11 @@ class TSProblemTestCase(unittest.TestCase):
             targets.append(t)
             origins.append(o)
 
+        # See how many of the TSProblem's are matching.
         tmatches = 0
         omatches = 0
         for i in range(len(targets)):
+            # Ensure that it created the correct problem sizes.
             self.assertEqual(len(targets[i]), test_length-1)
             self.assertEqual(len(targets[i][0]), 2)
             self.assertEqual(len(origins[i]), 2)
@@ -48,10 +63,17 @@ class TSProblemTestCase(unittest.TestCase):
                         tm1 += 1
                 if tm1/len(targets[i]) > 0.9:
                     tmatches += 1
+
+        # Ensure that the class is making random problems.
         self.assertLess(tmatches/test_length, threshold)
         self.assertLess(omatches/test_length, threshold)
 
     def test_random_dimmed_points(self):
+        """
+        Tests the TSProblem class when constructed without points and when specifying a point dimension.
+        :return: (void)
+        """
+        # Create many random TSProblem's.
         prob = tsp.TSProblem()
         targets = []
         origins = []
@@ -66,9 +88,11 @@ class TSProblemTestCase(unittest.TestCase):
             targets.append(t)
             origins.append(o)
 
+        # See how many of the TSProblem's are matching.
         tmatches = 0
         omatches = 0
         for i in range(len(targets)):
+            # Ensure that it created the correct problem sizes.
             self.assertEqual(len(targets[i]), test_length-1)
             self.assertEqual(len(targets[i][0]), dim)
             self.assertEqual(len(origins[i]), dim)
@@ -81,6 +105,8 @@ class TSProblemTestCase(unittest.TestCase):
                         tm1 += 1
                 if tm1/len(targets[i]) > 0.9:
                     tmatches += 1
+
+        # Ensure that the class is making random problems.
         self.assertLess(tmatches/test_length, threshold)
         self.assertLess(omatches/test_length, threshold)
 

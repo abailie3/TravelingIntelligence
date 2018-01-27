@@ -1,5 +1,5 @@
 """
-Copyright 2018, Austin Bailie, All rights reserved.
+Copyright (c) 2018 Austin Bailie, All rights reserved.
 """
 import math
 import unittest
