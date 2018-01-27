@@ -9,7 +9,11 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip install --user codecov
 
 script:
   - pytest
   - py.test
+
+after_success:
+  - codecov
