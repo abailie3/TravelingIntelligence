@@ -96,7 +96,6 @@ class MachineInterface(object):
             out += str(inputs[1]) + ","
         else:
             for i in range(1, nvars):
-                print(i)
                 out += str(inputs[i % len(inputs)]) + ","
 
         return out[:-1] + ")"
