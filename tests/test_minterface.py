@@ -25,14 +25,14 @@ class MachineLibraryTestCase(unittest.TestCase):
         self.assertLess(b.find("("), b.find(")"))
 
         # Now find a function with more than one input and ensure that works.
-        for i in range(40):
+        for i in range(100):
             inputs = [i, 4, 4, 321, 6]
             b = mi.__math__(inputs)
             if mi.__math_doc_nvars__(b) > 1:
                 self.assertLess(b.find("("), b.find(")"))
                 break
             # Want to show an error if it doesn't find a object with more than one input.
-            self.assertNotEqual(i, 39)
+            self.assertNotEqual(i, 99)
 
     def test_math_doc_nvars(self):
         string = "acos(x) \n blah blah this thing acos(xalskd,asd,fas,g,)"
