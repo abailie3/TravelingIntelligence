@@ -1,4 +1,4 @@
-##Guidelines for contributing to TravelingIntelligence
+## Guidelines for contributing to TravelingIntelligence
 [Back to README](README.md)
 
 So you want to help with this project? Great! I have laid out some guidelines for all contributors to ensure efficient and productive environment.
@@ -6,7 +6,7 @@ I ask that everyone who would like to contribute please read and follow these gu
 
 ___
 
-###Test Driven Development:
+### Test Driven Development:
 This project aims at following the Test Driven Development (TDD) philosophy. In short, this means that the first step when developing a new feature/improvement is not writing actual code, it is writing a test for that new feature. Below is a more detailed description of the ideal workflow:
 1. ***Identify a new feature or improvement:*** This could be a fix from the issue list, a new feature, a feature improvement, or etc.*
 2. ***Write tests for the new feature:*** The tests should be written such that they cover all cases, both normal and edge cases. Ideally, each function and class should have a test associated with it. See more guidelines on writing tests in the "Writing Tests" section below.
@@ -18,7 +18,7 @@ This project aims at following the Test Driven Development (TDD) philosophy. In 
 
 \* I intentionally left out refactoring code for style or an efficiency improvement here. In this case, a new test would not have to be created, since no new feature is being added and the functionality isn't being changed. Instead, after the changes are made the code should still pass all of the existing code for that module.
  
-###Writing tests:
+### Writing tests:
 As mentioned in the *Test Driven Development* section above, tests are very important to the success of this project! As such, here are some guidelines for writing tests. 
 * **Each Module (eg. something.py) should have a test module:** If I am adding a new module named "newmod.py" I should have a test module named "test_newmod.py" in the "tests" folder.
 * **Each Class should have a test class:** If I am adding the class named "NewClass" to the "newmod.py" module, then I should add a class named "NewClassTestCase" to the "test_newmod.py" module. Please follow the example in one of the previously made test modules. 
@@ -27,8 +27,8 @@ As mentioned in the *Test Driven Development* section above, tests are very impo
 * **All tests should be combined:** Since this is currently a small project, all tests should be combined into a test suite in the "test_all.py" module. This way, all new code can be tested against all tests for the project. Please follow the directions in "test_all.py".
 ___
 
-###Documentation
-####-Classes-
+### Documentation
+#### -Classes-
 Classes merely require a description of what the purpose of the class is. Below is an example:
     
     class DistanceMeasure(ABC):
@@ -36,7 +36,7 @@ Classes merely require a description of what the purpose of the class is. Below 
     Abstract class for various ways of accounting for distance.
     """
 All class methods should follow the functions standards below.
-####-Functions-
+#### -Functions-
 Below is an example of the documentation standard for functions 
 
         def __safe_idx__(arr_name: str, idx) -> str:
