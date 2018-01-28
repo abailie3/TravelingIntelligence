@@ -7,7 +7,7 @@
 The goal of this project is to create a sandbox for testing algorithms on the Traveling Salesman problem. This project is primarily focused on using AI to create these algorithms. As such, a large portion of this project is focused on creating a "MachineInterface" that will allow machine learning/AI algorithms to dynamically create algorithms.
 
 ##### Recent updates:
-1/27/18: Added contribution guidelines.
+1/28/18: Added Code of conduct.
 ___
 ##### Language(s):
 Currently this project only uses Python. Python was chosen for two main reasons: 
@@ -18,7 +18,7 @@ ___
 TO DO: Add usage documentation once further progress is made on machine interface.
 ___
 ##### Contribution guidelines:
-If you would like to contribute to this project, I'd ask that you follow the contribution guidelines in the [contribution guidelines](CONTRIBUTING.md).
+If you would like to contribute to this project, I'd ask that you follow the contribution guidelines in the [contribution guidelines](CONTRIBUTING.md). Additionally, I ask that all contributors and visitors please adhere to this project's [Code of Conduct](CODE_OF_CONDUCT.md).
 ___
 ##### Current Project Status: In-Development
 The current focus of this project is on developing the MachineInterface module.
