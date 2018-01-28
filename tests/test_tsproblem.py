@@ -118,11 +118,16 @@ The below lines of code should be included in all sub-test modules.
 def suite():
     """
     This method must be included at the end of all sub-test modules. To use in other modules, copy this entire
-    method to the new module and change the class within the loader.loadTestsFromTestCase(<change>) as appropriate.
+    method to the new module and add the correct test classes to the "tests" list.
     :return: (unittest.TestSuite) Test suite for this sub-test
     """
+    tests = [TSProblemTestCase]  # Add test classes here
     loader = unittest.TestLoader()
-    return loader.loadTestsFromTestCase(TSProblemTestCase)
+    full_suite = []
+    for test in tests:
+        test_suite = loader.loadTestsFromTestCase(test)
+        full_suite.append(test_suite)
+    return unittest.TestSuite(full_suite)
 
 if __name__ == "__main__":
     unittest.main()

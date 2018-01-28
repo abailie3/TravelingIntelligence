@@ -6,7 +6,7 @@ import unittest
 from travelingintelligence.machinelibrary import minterface
 
 
-class MachineLibraryTestCase(unittest.TestCase):
+class MachineInterfaceTestCase(unittest.TestCase):
 
     def test_execute(self):
         mi = minterface.MachineInterface()
@@ -58,6 +58,24 @@ class MachineLibraryTestCase(unittest.TestCase):
         out = mi.__safe_idx__(arr_name, idx)
         self.assertEqual(string, out)
 
+
+class ForLoopTestCase(unittest.TestCase):
+    def test_class_vars(self):
+        fl = minterface.ForLoop()
+        self.assertEqual({}, fl.carry_variables)
+        self.assertEqual({}, fl.internal_variables)
+        carry = {'test': 'test'}
+        internal = {'int': 'int'}
+        fl.carry_variables = carry
+        fl.internal_variables = internal
+        self.assertEqual(carry, fl.carry_variables)
+        self.assertEqual(internal, fl.internal_variables)
+
+    def test_get_code(self):
+        fl = minterface.ForLoop()
+        self.assertEqual(0, 0)
+
+
 """
 The below lines of code should be included in all sub-test modules.
 """
@@ -66,11 +84,16 @@ The below lines of code should be included in all sub-test modules.
 def suite():
     """
     This method must be included at the end of all sub-test modules. To use in other modules, copy this entire
-    method to the new module and change the class within the loader.loadTestsFromTestCase(<change>) as appropriate.
+    method to the new module and add the correct test classes to the "tests" list.
     :return: (unittest.TestSuite) Test suite for this sub-test
     """
+    tests = [MachineInterfaceTestCase, ForLoopTestCase]  # Add test classes here
     loader = unittest.TestLoader()
-    return loader.loadTestsFromTestCase(MachineLibraryTestCase)
+    full_suite = []
+    for test in tests:
+        test_suite = loader.loadTestsFromTestCase(test)
+        full_suite.append(test_suite)
+    return unittest.TestSuite(full_suite)
 
 if __name__ == "__main__":
     unittest.main()

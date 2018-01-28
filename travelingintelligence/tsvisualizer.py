@@ -16,7 +16,8 @@ class ProblemVisualizer(object):
 
     def visualize_2d_solution(self, sequence: List[Tuple]) -> plt:
         """
-        Generates a 2d graph (matplotlib.pyplot) of the problem/solution
+        Generates a 2d graph (matplotlib.pyplot) of the problem/solution.
+
         :param sequence: (List[Tuple]) The sequence of points visited.
         :return: (matplotlib.pyplot) The plot to show.
         """
@@ -33,6 +34,7 @@ class ProblemVisualizer(object):
         """
         Gets the points for a line segment between the current index and the previous. If the index is 0 then the
         previous index will be the last index.
+
         :param points: (List[List]) The points in form [[x0, x1, ...], [y0, y1, ...], [z0, z1, ...]...]
         :param idx: (int) The index to get the line segment to.
         :return: (List[List]) The line segment in the form [[x_idx-1, x_idx], [y_idx-1, y_idx], ...]
@@ -51,6 +53,7 @@ class ProblemVisualizer(object):
         """
         Splits point sequence (ex. [(0, 1), (1, 0), ...]) into lists of the points' x and y values
             (ex. [[0, 1, ...], [1, 0, ...]])
+
         :param sequence: (List[Tuple]) Point sequence in form [(x0, y0, z0, ...), (x1, y1, z1, ...),...]
         :return: (List) array of dimensional values in form [[x0, x1, ...], [y0, y1, ...], [z0, z1, ...]...]
         """

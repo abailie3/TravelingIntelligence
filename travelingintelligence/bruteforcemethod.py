@@ -26,6 +26,7 @@ class BruteForce(TSMethod):
         """
         The solve method required for TSMethod instances. Algorithm documentation in class doc.
         Algorithm additionally will log the runtime and save it in self.lastRunTime.
+
         :param problem: (TSProblem) the traveling salesman problem.
         :return: (Tuple[float, List]) the shortest path found by the algorithm, where the first member is the
                                       length of the path, and the second member is the sequence visited (as a
