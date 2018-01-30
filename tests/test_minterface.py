@@ -59,21 +59,89 @@ class MachineInterfaceTestCase(unittest.TestCase):
         self.assertEqual(string, out)
 
 
+class GenericBlockTestCase(unittest.TestCase):
+    def test_class_vars(self):
+        gb = minterface.GenericBlock()
+        self.assertEqual({}, gb._carry_variables_)
+        self.assertEqual({}, gb.internal_variables)
+        carry = {'test': 'test'}
+        internal = {'int': 'int'}
+        gb._carry_variables_ = carry
+        gb.internal_variables = internal
+        self.assertEqual(carry, gb._carry_variables_)
+        self.assertEqual(internal, gb.internal_variables)
+
+    def test_get_code(self):
+        gb = minterface.GenericBlock()
+        self.assertEqual([], gb.get_code())
+
+    def test_add_code(self):
+        gb = minterface.GenericBlock()
+        gb.add_code(["b = c + d"])
+        self.assertEqual(["b = c + d"], gb.get_code())
+        gb.add_code(["b = c + c"])
+        self.assertEqual(["b = c + d", "b = c + c"], gb.get_code())
+
+
 class ForLoopTestCase(unittest.TestCase):
     def test_class_vars(self):
         fl = minterface.ForLoop()
-        self.assertEqual({}, fl.carry_variables)
+        self.assertEqual({}, fl._carry_variables_)
         self.assertEqual({}, fl.internal_variables)
         carry = {'test': 'test'}
         internal = {'int': 'int'}
-        fl.carry_variables = carry
+        fl._carry_variables_ = carry
         fl.internal_variables = internal
-        self.assertEqual(carry, fl.carry_variables)
+        self.assertEqual(carry, fl._carry_variables_)
         self.assertEqual(internal, fl.internal_variables)
 
     def test_get_code(self):
         fl = minterface.ForLoop()
-        self.assertEqual(0, 0)
+        self.assertEqual(["for "], fl.get_code())
+
+    def test_add_code(self):
+        fl = minterface.ForLoop()
+        fl.add_code(["b = c + d"])
+        self.assertEqual(["for ", "    b = c + d"], fl.get_code())
+        fl.add_code(["b = c + c"])
+        self.assertEqual(["for ", "    b = c + d", "    b = c + c"], fl.get_code())
+
+    def test_range_indexing(self):
+        carry = {'i': int, 'b': list, 'aa0': bool}
+        reg = ['b', 'aa0', 'i']
+
+        # Normal defined range value case test
+        fl = minterface.ForLoop()
+        fl._carry_variables_ = carry
+        fl._carry_register_ = reg
+        fl.set_range_indexing(2)
+        self.assertTrue("range(i):" in fl.get_code()[0])
+        # Test that it picks a good variable name
+        self.assertNotEqual(reg[1], fl.indexing)
+
+        # Normal len list case test
+        fl = minterface.ForLoop()
+        fl._carry_variables_ = carry
+        fl._carry_register_ = reg
+        fl.set_range_indexing(0)
+        self.assertTrue("range(len(b))" in fl.get_code()[0])
+        # Test that it picks a good variable name
+        self.assertNotEqual(reg[1], fl.indexing)
+
+        # Edge index out of bounds case
+        fl = minterface.ForLoop()
+        fl._carry_variables_ = carry
+        fl._carry_register_ = reg
+        fl.set_range_indexing(len(reg) + 100)
+        self.assertEqual("for ", fl.get_code()[0])
+
+        # Edge bad variable type case
+        fl = minterface.ForLoop()
+        fl._carry_variables_ = carry
+        fl._carry_register_ = reg
+        fl.set_range_indexing(1)
+        self.assertEqual("for ", fl.get_code()[0])
+
 
 
 """
@@ -87,7 +155,7 @@ def suite():
     method to the new module and add the correct test classes to the "tests" list.
     :return: (unittest.TestSuite) Test suite for this sub-test
     """
-    tests = [MachineInterfaceTestCase, ForLoopTestCase]  # Add test classes here
+    tests = [MachineInterfaceTestCase, GenericBlockTestCase, ForLoopTestCase]  # Add test classes here
     loader = unittest.TestLoader()
     full_suite = []
     for test in tests:

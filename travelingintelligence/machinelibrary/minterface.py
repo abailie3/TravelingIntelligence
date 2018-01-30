@@ -4,8 +4,11 @@ Copyright (c) 2018 Austin Bailie, All rights reserved.
 import inspect
 import math
 import types
-from typing import Tuple, List, Iterable, TypeVar, Type, Dict
-from abc import ABC, abstractmethod, abstractproperty
+from typing import Tuple, List, TypeVar, Dict
+from abc import ABC
+
+__VarCOMB__ = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"]
+
 
 class MachineInterface(object):
     """
@@ -18,8 +21,6 @@ class MachineInterface(object):
     __return__ = __tab__ + "return fout, lout"
 
     __ASSIGNVARIABLE = 0
-
-
 
     def __init__(self):
         self.__method = self.__method_start__
@@ -52,11 +53,11 @@ class MachineInterface(object):
     def __new_list__(self, name=None):
         return self.__new_var__(List, name)
 
-    def __new_var__(self, type=None, name=None) -> str:
+    def __new_var__(self, var_type=None, name=None) -> str:
         """
         For creating and logging new variables.
 
-        :param type: (Optional str) The name of the type of the variable.
+        :param var_type: (Optional str) The name of the type of the variable.
         :param name: (Optional str) The name for the variable. If none a random name will be created.
         :return: (str) The name. Either the provided name or the randomly generated name.
         """
@@ -64,8 +65,8 @@ class MachineInterface(object):
             from time import time
             name = str(int(time()*1e7))
         self.__numVar += 1
-        self.__variables.append((name,type))
-        if type == List:
+        self.__variables.append((name, var_type))
+        if var_type == List:
             return name + " = []"
         return name
 
@@ -165,7 +166,7 @@ class MachineInterface(object):
         Just a test module for the class.
         :return:
         """
-        b = self.__math__([1, 3, 5, 2, 5, 3, 2, 15, 6,7, 5])
+        # b = self.__math__([1, 3, 5, 2, 5, 3, 2, 15, 6,7, 5])
         return self.__compile__()(0, [])
 
 
@@ -173,61 +174,148 @@ class CodeElement(ABC):
     """
     Abstract class for the various code elements. (eg. ForLoop, Conditional, etc.)
     """
+    __tab__ = "    "  # Standard tab width for line indentation
+
     def __init__(self):
-        self._car_vars_ = {}
+        self.__car_vars__ = {}
+        self.__car_var_reg__ = []
         self._int_vars_ = {}
+        self._spacing_ = ""
+        self._block_ = []
+        self._prefix_ = ""
 
     @property
-    def carry_variables(self):
-        return self._car_vars_
+    def _carry_variables_(self) -> Dict:
+        return self.__car_vars__
 
-    @carry_variables.setter
-    def carry_variables(self, var: Dict):
-        self._var_setter_(var)
-
-    def _var_setter_(self, var: Dict):
-        self._car_vars_ = var
+    @_carry_variables_.setter
+    def _carry_variables_(self, var: Dict):
+        self.__car_vars__ = var
 
     @property
-    def internal_variables(self):
+    def _carry_register_(self) -> List[str]:
+        return self.__car_var_reg__
+
+    @_carry_register_.setter
+    def _carry_register_(self, car_reg: List[str]):
+        self.__car_var_reg__ = car_reg
+
+    @property
+    def internal_variables(self) -> Dict:
         return self._int_vars_
 
     @internal_variables.setter
     def internal_variables(self, var: Dict):
-        self._internal_variables__setter_(var)
-
-    def _internal_variables__setter_(self, var: Dict):
         self._int_vars_ = var
 
-    @abstractmethod
+    @property
+    def __spacing__(self) -> str:
+        return self._spacing_
+
+    @__spacing__.setter
+    def __spacing__(self, space: str):
+        self._spacing_ = space
+
+    @property
+    def __code_block__(self) -> List[str]:
+        return self._block_
+
+    @__code_block__.setter
+    def __code_block__(self, new_block: List[str]):
+        self._block_ = new_block
+
+    @property
+    def __prefix__(self):
+        return self._prefix_
+
+    @__prefix__.setter
+    def __prefix__(self, new_prefix: str):
+        self._prefix_ = new_prefix
+
+    def _get_available_var_(self) -> str:
+        for a in __VarCOMB__:
+            for b in __VarCOMB__:
+                for i in range(10):
+                    if (a + b + str(i)) not in self._carry_variables_ and \
+                                    (a + b + str(i)) not in self.internal_variables:
+                        return a + b + str(i)
+        return ""  # TODO: Make this throw an error instead
+
+    def add_code(self, code_lines: List[str]) -> None:
+        """
+        Method for adding a block of code lines using a list of strings.
+
+        :param code_lines: (List[str]) The block of code lines
+        :return: (void)
+        """
+        self.__code_block__ += code_lines
+
+    def add_code_block(self, code_block: 'CodeElement') -> None:
+        """
+        Method for adding a block of code lines using another code element.
+
+        :param code_block: (CodeElement) The block of code lines
+        :return: (void)
+        """
+        self.add_code(code_block.get_code())
+
     def get_code(self) -> List[str]:
         """
         To retrieve the code generated by the code element
 
         :return: (str) The un-indented line or block of code representing the code element.
         """
-        pass
+        if self.__prefix__ == "":
+            out = []
+        else:
+            out = [self.__prefix__]
+
+        if self.__spacing__ == "":
+            return out + self.__code_block__
+
+        for line in self.__code_block__:
+            out.append(self.__spacing__ + line)
+        return out
 
 
 CE = TypeVar('CE', bound=CodeElement)
+
+
+class GenericBlock(CodeElement):
+    """
+    This class is for creating a standard block of code.
+    """
+    def __init__(self):
+        super().__init__()
+        self.__prefix__ = ""
+        self.__spacing__ = ""
 
 
 class ForLoop(CodeElement):
     """
     This class is for creating a for loop.
     """
-    __tab__ = "    "  # Standard tab width for line indentation
-    __start__ = "for "
-
-    def __init__(self, do: CodeElement=None):
+    def __init__(self):
         super().__init__()
-        self.do = do
         self.indexing = ""
-        self.__codeblock__ = self.__start__
+        self.__prefix__ = "for "
+        self.__spacing__ = self.__tab__
+
+    def set_range_indexing(self, var_idx: int) -> None:
+        if len(self._carry_register_) < var_idx or len(self._carry_register_) == 0:
+            return  # TODO: Throw an error
+        if self._carry_variables_[self._carry_register_[var_idx]] not in [List, int, list]:
+            return  # TODO: Throw an error
+
+        # Done checking
+        self.indexing = self._get_available_var_()
+        self.__prefix__ += self.indexing + " in range("
+        if self._carry_variables_[self._carry_register_[var_idx]] == int:
+            self.__prefix__ += self._carry_register_[var_idx] + ")"
+        else:
+            self.__prefix__ += "len(" + self._carry_register_[var_idx] + "))"
+        self.__prefix__ += ":"
 
 
-    def get_code(self) -> List[str]:
-        if self.do is None:
-            return None  # TODO: Add error to throw instead
-        block = self.do.get_code
-
+if __name__ == "__main__":
+    mi = MachineInterface()

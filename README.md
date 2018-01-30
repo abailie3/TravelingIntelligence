@@ -26,7 +26,7 @@ See the main [project board](https://github.com/abailie3/TravelingIntelligence/p
 ___
 ##### Contact the project team
 If you have found a bug or issue with the code, please read the [contribution guidelines](CONTRIBUTING.md) and submit an issue via GitHub.
-Otherwise, if you would like to contact me about this project you may email: travelingintelligence@gmail.com
+Otherwise, if you would like to contact me about this project you may email: [travelingintelligence@gmail.com](travelingintelligence@gmail.com)
 
 ___
 Copyright (c) 2018 Austin Bailie, All rights reserved.
