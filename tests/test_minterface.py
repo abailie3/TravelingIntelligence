@@ -142,6 +142,45 @@ class ForLoopTestCase(unittest.TestCase):
         fl.set_range_indexing(1)
         self.assertEqual("for ", fl.get_code()[0])
 
+    def test_member_indexing(self):
+        carry = {'i': int, 'b': list, 'd': dict, 's': str, 'aa0': bool}
+        reg = ['b', 'aa0', 'i', 'd', 's']
+
+        # Normal list type case test
+        fl = minterface.ForLoop()
+        fl._carry_variables_ = carry
+        fl._carry_register_ = reg
+        fl.set_member_indexing(0)
+        self.assertTrue("in b:" in fl.get_code()[0])
+
+        # Normal dict type case test
+        fl = minterface.ForLoop()
+        fl._carry_variables_ = carry
+        fl._carry_register_ = reg
+        fl.set_member_indexing(3)
+        self.assertTrue("in d:" in fl.get_code()[0])
+
+        # Normal str type case test
+        fl = minterface.ForLoop()
+        fl._carry_variables_ = carry
+        fl._carry_register_ = reg
+        fl.set_member_indexing(4)
+        self.assertTrue("in s:" in fl.get_code()[0])
+
+        # Edge bad variable type case
+        fl = minterface.ForLoop()
+        fl._carry_variables_ = carry
+        fl._carry_register_ = reg
+        fl.set_member_indexing(2)
+        self.assertEqual("for ", fl.get_code()[0])
+
+        # Edge index out of bounds case
+        fl = minterface.ForLoop()
+        fl._carry_variables_ = carry
+        fl._carry_register_ = reg
+        fl.set_member_indexing(len(reg) + 100)
+        self.assertEqual("for ", fl.get_code()[0])
+
 
 
 """

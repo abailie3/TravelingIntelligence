@@ -302,6 +302,18 @@ class ForLoop(CodeElement):
         self.__spacing__ = self.__tab__
 
     def set_range_indexing(self, var_idx: int) -> None:
+        """
+        Sets the indexing method of the for loop to be based on a range of the indexing variables from 0 to some number,
+        incremented by 1. It returns the following form:
+            "for var0 in range(var1):"
+                Where:
+                    var0 - some un-used variable
+                    var1 - if var_idx corresponds to a variable of type int, then var1 is this variable. Else if var_idx
+                           corresponds to a list, then var1 is the length of said variable. Otherwise, this method fails
+
+        :param var_idx: (int) The index in the carry variables of the variable to use in the "range()" interior
+        :return: (void)
+        """
         if len(self._carry_register_) < var_idx or len(self._carry_register_) == 0:
             return  # TODO: Throw an error
         if self._carry_variables_[self._carry_register_[var_idx]] not in [List, int, list]:
@@ -316,6 +328,23 @@ class ForLoop(CodeElement):
             self.__prefix__ += "len(" + self._carry_register_[var_idx] + "))"
         self.__prefix__ += ":"
 
+    def set_member_indexing(self, var_idx: int) -> None:
+        """
+        Sets the indexing method of the for loop to be based on iterating through the members of some data structure.
+        The data structure must be either a list, dict, or str.
+
+        :param var_idx: (int) The index in the carry variables of the variable to iterate through
+        :return: (void)
+        """
+        if len(self._carry_register_) < var_idx or len(self._carry_register_) == 0:
+            return  # TODO: Throw an error
+        if self._carry_variables_[self._carry_register_[var_idx]] not in [List, list, Dict, dict, str]:
+            return  # TODO: Throw an error
+
+        # Done checking
+        self.indexing = self._get_available_var_()
+        self.__prefix__ += self.indexing + " in " + self._carry_register_[var_idx]
+        self.__prefix__ += ":"
 
 if __name__ == "__main__":
     mi = MachineInterface()

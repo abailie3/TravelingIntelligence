@@ -7,6 +7,8 @@
 The goal of this project is to create a sandbox for testing algorithms on the Traveling Salesman problem. This project is primarily focused on using AI to create these algorithms. As such, a large portion of this project is focused on creating a "MachineInterface" that will allow machine learning/AI algorithms to dynamically create algorithms.
 
 ##### Recent updates:
+2/4/18: Made a few updates to the minterface module to add functionality.
+
 1/28/18: Added Code of conduct. Began work on sphinx integration to develop documentation.
 ___
 ##### Language(s):
