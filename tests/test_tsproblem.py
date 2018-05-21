@@ -2,6 +2,8 @@
 Copyright (c) 2018 Austin Bailie, All rights reserved.
 """
 import unittest
+import sys
+import inspect
 
 from travelingintelligence import tsproblem as tsp
 
@@ -110,6 +112,7 @@ class TSProblemTestCase(unittest.TestCase):
         self.assertLess(tmatches/test_length, threshold)
         self.assertLess(omatches/test_length, threshold)
 
+
 """
 The below lines of code should be included in all sub-test modules.
 """
@@ -118,16 +121,17 @@ The below lines of code should be included in all sub-test modules.
 def suite():
     """
     This method must be included at the end of all sub-test modules. To use in other modules, copy this entire
-    method to the new module and add the correct test classes to the "tests" list.
+    method to the new module.
     :return: (unittest.TestSuite) Test suite for this sub-test
     """
-    tests = [TSProblemTestCase]  # Add test classes here
+    tests = inspect.getmembers(sys.modules[__name__], inspect.isclass)
     loader = unittest.TestLoader()
     full_suite = []
     for test in tests:
-        test_suite = loader.loadTestsFromTestCase(test)
+        test_suite = loader.loadTestsFromTestCase(test[1])
         full_suite.append(test_suite)
     return unittest.TestSuite(full_suite)
+
 
 if __name__ == "__main__":
     unittest.main()

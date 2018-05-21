@@ -2,6 +2,8 @@
 Copyright (c) 2018 Austin Bailie, All rights reserved.
 """
 import unittest
+import sys
+import inspect
 
 from travelingintelligence.machinelibrary import minterface
 
@@ -106,6 +108,14 @@ class ForLoopTestCase(unittest.TestCase):
         fl.add_code(["b = c + c"])
         self.assertEqual(["for ", "    b = c + d", "    b = c + c"], fl.get_code())
 
+    def test_nested_loop(self):
+        fl = minterface.ForLoop()
+        fl2 = minterface.ForLoop()
+        fl.add_code(["a = b + c"])
+        fl2.add_code(["b = c + d"])
+        fl.add_code_block(fl2)
+        self.assertEqual(['for ', '    a = b + c', '    for ', '        b = c + d'], fl.get_code())
+
     def test_range_indexing(self):
         carry = {'i': int, 'b': list, 'aa0': bool}
         reg = ['b', 'aa0', 'i']
@@ -182,7 +192,6 @@ class ForLoopTestCase(unittest.TestCase):
         self.assertEqual("for ", fl.get_code()[0])
 
 
-
 """
 The below lines of code should be included in all sub-test modules.
 """
@@ -191,16 +200,17 @@ The below lines of code should be included in all sub-test modules.
 def suite():
     """
     This method must be included at the end of all sub-test modules. To use in other modules, copy this entire
-    method to the new module and add the correct test classes to the "tests" list.
+    method to the new module.
     :return: (unittest.TestSuite) Test suite for this sub-test
     """
-    tests = [MachineInterfaceTestCase, GenericBlockTestCase, ForLoopTestCase]  # Add test classes here
+    tests = inspect.getmembers(sys.modules[__name__], inspect.isclass)
     loader = unittest.TestLoader()
     full_suite = []
     for test in tests:
-        test_suite = loader.loadTestsFromTestCase(test)
+        test_suite = loader.loadTestsFromTestCase(test[1])
         full_suite.append(test_suite)
     return unittest.TestSuite(full_suite)
+
 
 if __name__ == "__main__":
     unittest.main()

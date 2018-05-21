@@ -139,7 +139,7 @@ class MachineInterface(object):
     @staticmethod
     def __count_commas__(test_str: str) -> int:
         """
-        Countst number of commas in the input string
+        Counts number of commas in the input string
 
         :param test_str: (str) String with commas to count
         :return: (int) Number of commas in test_str
@@ -183,6 +183,7 @@ class CodeElement(ABC):
         self._spacing_ = ""
         self._block_ = []
         self._prefix_ = ""
+        self.isClosed = False
 
     @property
     def _carry_variables_(self) -> Dict:
@@ -345,6 +346,7 @@ class ForLoop(CodeElement):
         self.indexing = self._get_available_var_()
         self.__prefix__ += self.indexing + " in " + self._carry_register_[var_idx]
         self.__prefix__ += ":"
+
 
 if __name__ == "__main__":
     mi = MachineInterface()
